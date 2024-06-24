@@ -1,4 +1,4 @@
-import { conectaApi } from "./conectaApi.js";
+import { varConectaApi } from "../js/conectaApi.js";
 
 const listaHtml = document.querySelector('[data-lista]');
 
@@ -17,9 +17,9 @@ function constroiCard(titulo, descricao, url, imagem){ //cria outros itens da li
     return video;
 }
 
-async function listarVideos(){ 
+async function mostrarVideos(){ 
     //Acessa a conectaApi.js, pega a função listaVideos e retorna o valor da nossa API, do db.json via fetch; 
-    const listaApi = await conectaApi.listarVideos();
+    const listaApi = await varConectaApi.listarVideos();
     //para cada item da lista da nossa API, um item da lista do index.html deve ser criado
     listaApi.forEach(elemento => listaHtml.appendChild(//cada elemento que vai pra listaApi, é a criação de um elemento filho da listaHtml, onde( 
         //usando a função ConstroiCard(
@@ -27,4 +27,4 @@ async function listarVideos(){
         constroiCard(elemento.titulo, elemento.descricao, elemento.url, elemento.imagem)));
 }
 
-listarVideos();
+mostrarVideos();
