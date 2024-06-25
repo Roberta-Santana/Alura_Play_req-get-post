@@ -18,6 +18,7 @@ export default function constroiCard(titulo, descricao, url, imagem){ //cria out
 }
 
 async function mostrarVideos(){ 
+    try{
     //Acessa a conectaApi.js, pega a função listaVideos e retorna o valor da nossa API, do db.json via fetch; 
     const listaApi = await varConectaApi.listarVideos();
     //para cada item da lista da nossa API, um item da lista do index.html deve ser criado
@@ -25,6 +26,10 @@ async function mostrarVideos(){
         //usando a função ConstroiCard(
         //cada item criado deve ter os atributos que já estão no db.json(colunas da tabela do banco- titulo, descrição, url, imagem)
         constroiCard(elemento.titulo, elemento.descricao, elemento.url, elemento.imagem)));
+    }
+    catch{
+        listaHtml.innerHTML= `<h2 class="mensagem__titulo">Não foi possível carregar a lista de vídeos</h2>`
+    }
 }
 
 mostrarVideos();

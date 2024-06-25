@@ -15,28 +15,14 @@ async function criarVideos(titulo, descricao, url, imagem){
             descricao:`${descricao} mil visualizações`,
             url: url,
             imagem:imagem})
-    })
+    });
+    if(!conexao.ok){
+        throw new Error("Não foi possível enviar o vídeo!")
+    }
     //que é a de cadastrar novas coisas lá na nossa API, no nosso db.json
-    const conexaoConvertida = conexao.json();
+    const conexaoConvertida = await conexao.json();
     return conexaoConvertida;
 }
-/* async function buscarVideos(termoDeBusca) {
-    try {
-        const conexao = await fetch(`http://localhost:3000/videos?q=${termoDeBusca}`);
-
-        // Verificação do status da resposta
-        if (!conexao.ok) {
-            throw new Error(`Erro na requisição: ${conexao.status} ${conexao.statusText}`);
-        }
-
-        const conexaoConvertida = await conexao.json();
-        return conexaoConvertida;
-    } catch (error) {
-        console.error("Erro ao buscar vídeos:", error);
-        return [];
-    }
-} */
-
 
 async function buscarVideos(termoDeBusca){
     const conexao = await fetch(`http://localhost:3000/videos?q=${termoDeBusca}`);

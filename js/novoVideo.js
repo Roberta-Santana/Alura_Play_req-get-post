@@ -1,4 +1,4 @@
-/* import { varConectaApi } from "./conectaApi.js";
+import { varConectaApi } from "./conectaApi.js";
 const formulario = document.querySelector('[data-formulario]');
 
 async function novoVideo(evento){ //passando evento por parametro, 
@@ -10,18 +10,20 @@ async function novoVideo(evento){ //passando evento por parametro,
     const imagem = document.querySelector('[data-imagem]').value;
     const descricao = Math.floor(Math.random()*10).toString();
 
-    await varConectaApi.criarVideos(titulo,descricao,url,imagem);
-    //enviar parãmetros na ordem da função do conect api
-
-    window.location.href = "../pages/envio-concluido.html";
-    //feeedback ao usuário se nada der erro
+    try{
+        await varConectaApi.criarVideos(titulo,descricao,url,imagem);
+        //enviar parãmetros na ordem da função do conect api
+        window.location.href = "../pages/envio-concluido.html";
+        //feeedback ao usuário se nada der erro
+    }
+    catch(e){
+        alert(e)
+    }
 }
 
 formulario.addEventListener("submit", evento => novoVideo(evento));
 
- */
-
-import { varConectaApi } from "./conectaApi.js"; // Importa o objeto varConectaApi do arquivo conectaApi.js
+/* import { varConectaApi } from "./conectaApi.js"; // Importa o objeto varConectaApi do arquivo conectaApi.js
 
 const formulario = document.querySelector('[data-formulario]'); // Seleciona o formulário usando o atributo data-formulario
 
@@ -50,4 +52,4 @@ async function novoVideo(evento) {
 }
 
 // Adiciona um ouvinte de eventos ao formulário para lidar com o envio
-formulario.addEventListener("submit", novoVideo);
+formulario.addEventListener("submit", novoVideo); */
