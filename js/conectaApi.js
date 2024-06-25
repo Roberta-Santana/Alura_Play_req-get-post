@@ -20,6 +20,23 @@ async function criarVideos(titulo, descricao, url, imagem){
     const conexaoConvertida = conexao.json();
     return conexaoConvertida;
 }
+/* async function buscarVideos(termoDeBusca) {
+    try {
+        const conexao = await fetch(`http://localhost:3000/videos?q=${termoDeBusca}`);
+
+        // Verificação do status da resposta
+        if (!conexao.ok) {
+            throw new Error(`Erro na requisição: ${conexao.status} ${conexao.statusText}`);
+        }
+
+        const conexaoConvertida = await conexao.json();
+        return conexaoConvertida;
+    } catch (error) {
+        console.error("Erro ao buscar vídeos:", error);
+        return [];
+    }
+} */
+
 
 async function buscarVideos(termoDeBusca){
     const conexao = await fetch(`http://localhost:3000/videos?q=${termoDeBusca}`);
