@@ -1,12 +1,12 @@
 async function listarVideos(){
-    const conexao = await fetch('http://localhost:3000/videos');
+    const conexao = await fetch('https://json-server-vercel-git-main-roberta-santanas-projects.vercel.app/videos');
     const conexaoConvertida = await conexao.json();
     return conexaoConvertida;
 }
 
 async function criarVideos(titulo, descricao, url, imagem){
     //estrutura de uma função assíncrona, que faz uma conexão com a API 
-    const conexao = await fetch('http://localhost:3000/videos', {
+    const conexao = await fetch('https://json-server-vercel-git-main-roberta-santanas-projects.vercel.app/videos', {
         //e cria uma requisição POST,
         method:"POST",
         headers:{ "Content-type":"application/json"},
@@ -25,7 +25,7 @@ async function criarVideos(titulo, descricao, url, imagem){
 }
 
 async function buscarVideos(termoDeBusca){
-    const conexao = await fetch(`http://localhost:3000/videos?q=${termoDeBusca}`);
+    const conexao = await fetch(`https://json-server-vercel-git-main-roberta-santanas-projects.vercel.app/videos?q=${termoDeBusca}`);
     const conexaoConvertida = await conexao.json();
     return conexaoConvertida;
 }
